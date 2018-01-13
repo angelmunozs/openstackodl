@@ -14,8 +14,6 @@ tar -zxvf karaf-0.7.1.tar.gz
 rm karaf-0.7.1.tar.gz
 # Move to directory
 cd karaf-0.7.1
-# Start OpenDaylight as a server process
-./bin/start
 
 # =========================================================================
 # Download Java (Oracle JDK 8)
@@ -32,10 +30,25 @@ export JAVA_HOME=/usr/lib/jvm/java-8-oracle
 # dlux and their dependencies
 # =========================================================================
 
+# Start OpenDaylight as a server process, and wait for a while
+./bin/start
+
 # Connect to OpenDaylight with the client
 ./bin/client
-# Execute this from the client shell
-feature:install odl-base-all:latest odl-aaa-authn:latest odl-restconf:latest odl-adsal-northbound:latest odl-mdsal-apidocs odl-ovsdb-northbound odl-dlux-core odl-nsf-all odl-ovsdb-openstack
+
+# Install features from the client shell
+feature:install odl-aaa-authn
+feature:install odl-restconf-all
+feature:install odl-mdsal-apidocs
+feature:install odl-l2switch-switch
+feature:install odl-neutron-service
+feature:install odl-neutron-northbound-api
+feature:install odl-neutron-spi
+feature:install odl-neutron-transcriber
+
+# TODO: Make these ones work too
+feature:install odl-netvirt-openstack
+feature:install odl-dlux-all
 
 # =========================================================================
 # End echoes
