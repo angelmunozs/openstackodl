@@ -47,7 +47,7 @@ feature:install odl-neutron-spi
 feature:install odl-neutron-transcriber
 
 # TODO: Make these ones work too
-feature:install odl-netvirt-openstack
+feature:install odl-ovsdb-openstack
 feature:install odl-dlux-all
 
 # =========================================================================

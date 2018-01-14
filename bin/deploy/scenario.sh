@@ -47,7 +47,7 @@ fi
 cd $SCENARIO_NAME
 
 # Move here the specification file
-mv $WORKDIR/$XML_NAME .
+sudo mv $WORKDIR/$XML_NAME .
 
 # Create environment
 sudo vnx -f $XML_NAME -v --create
@@ -59,10 +59,10 @@ sudo vnx -f $XML_NAME -v -x start-all
 sudo vnx -f $XML_NAME -v -x load-img
 
 # Create demo scenario
-sudo vnx -f $XML_NAME -v -x create-demo-scenario
+sudo vnx -f $XML_NAME -v -x create-openstackodl
 
 # Configure NAT
-sudo vnx_config_nat ExtNet virbr0
+sudo vnx_config_nat ExtNet wlp3s0
 
 # =========================================================================
 # End echoes
